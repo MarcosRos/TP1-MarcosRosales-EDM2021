@@ -63,7 +63,6 @@ public class CalculadoraController {
 		modelView.addObject("resultadoFinal", resultadoFinal);
 		
 		return modelView;
-	
 	}
 	
 	@GetMapping("/calculoDivision")
@@ -72,13 +71,20 @@ public class CalculadoraController {
 		unaCalculadora.setNum1(Integer.valueOf(num1));
 		unaCalculadora.setNum2(num2);
 		
-		double resultadoFinal = unaCalculadora.dividir();
-		
+		double resultadoDivision = unaCalculadora.dividir();
+		if (num2 == 0) {
+			ModelAndView modelView = new ModelAndView("resultadodivision");
+			modelView.addObject("resultadoDivision", resultadoDivision);
+			return modelView;
+		}
+		else
+		{
 		ModelAndView modelView = new ModelAndView("resultado");
-		modelView.addObject("resultadoFinal", resultadoFinal);
-		
+		modelView.addObject("resultadoFinal", resultadoDivision);
 		return modelView;
-	
+		}
+
+
 	}
 	
 }
